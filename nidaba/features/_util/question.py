@@ -160,3 +160,25 @@ def python_docs_urls(s):
     result = regex.findall(s)
 
     return result
+
+
+def get_emoticons(text):
+    """
+    Return a dictionary of emoticons & their count in the given text.
+    :param text: String or List of words.
+    :return: Dictionary - emoticons as keys and their count as values.
+    """
+    emoticons = (":-) :) :D :o) :] :3 :c) :> =] 8) =) :} :^) :っ) :-D 8-D 8D"
+                 "x-D xD X-D XD =-D =D =-3 =3 B^D :-)) >:[ :-( :( :-c :c :-<"
+                 ":っC :< :-[ :[ :{ ;( :-|| :@  >:( :'-( :'(  :'-) :')D :< D:"
+                 "D8 D; D= DX v.v D-': >:O :-O:O:-o:o 8-0 O_O o-o O_o o_O o_o"
+                 "O-O :* :^* ;^) :-, >:P :-P :P X-P x-p xp XP :-p :p =p :-Þ"
+                 ">:\ >:/ :-/ :-. :/ :\ =/ =\ :L =L :S >.< :| :-| :$ :-X :X"
+                 ":-# :# O:-) 0:-3 0:3 0:-) 0:) 0;^) >:) >;) >:-) }:-) }:)"
+                 "3:-) 3:) o/\o ^5 >_>^ ^<_< |;-) |-O :-J :-& :& #-) %-) %)"
+                 ":-###.. :###.. <:-| ಠ_ಠ <*)))-{ ><(((*> ><> \o/ *\0/*"
+                 "@}-;-'--- @>-->-- ~(_8^(I) 5:-) ~:-\ //0-0\\ *<|:-) =:o]"
+                 ",:-) 7:^] <3 </3").split()
+    if isinstance(text, str):
+        text = text.split()
+    return Counter(word for word in text if word in emoticons)
